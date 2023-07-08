@@ -15,11 +15,11 @@ return new class extends Migration
 
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained('rooms');
             $table->string('nameGuest', 255);
             $table->string('emailGuest', 255);
-            $table->timestamps('from');
-            $table->timestamps('end');
+            $table->date('from');
+            $table->date('end');
             $table->enum('status', ["pending","confirmed","suspend","finished"]);
             $table->timestamps();
         });
