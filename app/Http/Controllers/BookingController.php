@@ -28,6 +28,7 @@ class BookingController extends Controller
     public function getMyBookings(string $emailGuest)
     {
         $bookings = Booking::with('room.hotel')->where('emailGuest', $emailGuest)->get();
+
         return response()->json($bookings);
     }
 
