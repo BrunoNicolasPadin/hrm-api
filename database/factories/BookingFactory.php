@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Booking;
 use App\Models\Room;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BookingFactory extends Factory
 {
@@ -26,8 +25,8 @@ class BookingFactory extends Factory
             'nameGuest' => $this->faker->name('male'),
             'emailGuest' => $this->faker->email(),
             'from' => $this->faker->date('Y-m-d', '2023-08-01'),
-            'end' =>  $this->faker->dateTimeBetween('2023-08-02', '2024-08-01'),
-            'status' => $this->faker->randomElement(["pending","confirmed","suspend","finished"]),
+            'end' => $this->faker->dateTimeBetween('2023-08-02', '2024-08-01'),
+            'status' => $this->faker->randomElement(['pending', 'confirmed', 'suspend', 'finished']),
         ];
     }
 }

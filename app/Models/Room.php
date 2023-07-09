@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 class Room extends Model
 {
@@ -43,6 +43,7 @@ class Room extends Model
     public function toSearchableArray(): array
     {
         $rooms = $this->select('id', 'hotel_id', 'bath', 'size', 'number')->with('hotel')->first()->toArray();
+
         return [
             'id' => (int) $this->id,
             'bath' => (int) $this->bath,

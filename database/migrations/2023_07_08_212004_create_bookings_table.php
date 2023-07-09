@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('emailGuest', 255);
             $table->date('from');
             $table->date('end');
-            $table->enum('status', ["pending","confirmed","suspend","finished"]);
+            $table->enum('status', ['pending', 'confirmed', 'suspend', 'finished']);
             $table->timestamps();
         });
 

@@ -137,10 +137,10 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             Room::class => [
-                'filterableAttributes'=> ['number', 'size', 'barth', 'hotel_id'],
+                'filterableAttributes' => ['number', 'size', 'barth', 'hotel_id'],
             ],
             Hotel::class => [
-                'filterableAttributes'=> ['name'],
+                'filterableAttributes' => ['name'],
             ],
         ],
     ],
