@@ -10,7 +10,7 @@ class BookingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($emailGuest)
     {
         //
     }
@@ -25,10 +25,16 @@ class BookingController extends Controller
         return response()->json('OK', 200);
     }
 
+    public function getMyBookings(string $emailGuest)
+    {
+        $bookings = Booking::with('room.hotel')->where('emailGuest', $emailGuest)->get();
+        return response()->json($bookings);
+    }
+
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $emailGuest)
     {
         //
     }

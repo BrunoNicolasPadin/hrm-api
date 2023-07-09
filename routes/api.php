@@ -6,3 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('rooms', RoomController::class);
 Route::apiResource('bookings', BookingController::class);
+Route::get('/bookings/{emailGuest}/my-bookings', [BookingController::class, 'getMyBookings'])->name('bookings.my');
