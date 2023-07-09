@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Room extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -36,5 +38,26 @@ class Room extends Model
     public function hotel(): BelongsTo
     {
         return $this->belongsTo(Hotel::class);
+    }
+
+    public function toSearchableArray(): array
+    {
+        $rooms = $this->select('id', 'hotel_id', 'bath', 'size', 'number')->with('hotel')->first()->toArray();
+        return [
+            'id' => (int) $this->id,
+            'bath' => (int) $this->bath,
+            'size' => (int) $this->size,
+            'hotelName' => (string) $this->hotel->name,
+        ];
+    }
+
+    public function searchableAs(): string
+    {
+        return 'rooms_index';
+    }
+
+    protected function makeAllSearchableUsing(Builder $query): Builder
+    {
+        return $query->with('hotel');
     }
 }
