@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Events\StatusBookingUpdated;
 
 class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($emailGuest)
+    public function index()
     {
         //
     }
@@ -45,7 +46,13 @@ class BookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+    }
+
+    public function updateStatus(string $id)
+    {
+        broadcast(new StatusBookingUpdated($id, 'confirmed'));
+
+        return response()->json([], 200);
     }
 
     /**
