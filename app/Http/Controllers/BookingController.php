@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StatusBookingUpdated;
 use App\Models\Booking;
 use Illuminate\Http\Request;
-use App\Events\StatusBookingUpdated;
 
 class BookingController extends Controller
 {

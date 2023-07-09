@@ -8,6 +8,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class StatusBookingUpdated implements ShouldBroadcast
 {
     public int $id;
+
     public string $status;
 
     /**
