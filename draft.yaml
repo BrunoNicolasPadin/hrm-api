@@ -1,0 +1,20 @@
+models:
+  Hotel:
+    name: string:255
+    email: string:255
+
+  Room:
+    hotel_id: foreign:hotels
+    number: integer
+    size: integer
+    bath: integer
+    wifi: bool
+
+  Booking:
+    room_id: foreign:rooms
+    nameGuest: string:255
+    emailGuest: string:255
+    from: timestamps
+    end: timestamps
+    status: enum:pending,confirmed,suspend,finished
+    

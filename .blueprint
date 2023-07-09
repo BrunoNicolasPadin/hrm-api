@@ -1,0 +1,15 @@
+created:
+    - database/factories/HotelFactory.php
+    - database/factories/RoomFactory.php
+    - database/factories/BookingFactory.php
+    - database/migrations/2023_07_08_212002_create_hotels_table.php
+    - database/migrations/2023_07_08_212003_create_rooms_table.php
+    - database/migrations/2023_07_08_212004_create_bookings_table.php
+    - app/Models/Hotel.php
+    - app/Models/Room.php
+    - app/Models/Booking.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Hotel: { name: 'string:255', email: 'string:255' }
+    Room: { hotel_id: 'foreign:hotels', number: integer, size: integer, bath: integer, wifi: bool }
+    Booking: { room_id: 'foreign:rooms', nameGuest: 'string:255', emailGuest: 'string:255', from: timestamps, end: timestamps, status: 'enum:pending,confirmed,suspend,finished' }
